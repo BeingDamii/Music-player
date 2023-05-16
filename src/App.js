@@ -1,9 +1,12 @@
-import './App.css';
+import Player from "./components/player";
+import Song from "./components/songs";
+import "./styles/app.scss";
 
 function App() {
   return (
-    <div className="App">
-      <h1>hello world</h1>
+    <div className="main-wrapper">
+      <Song />
+      <Player />
     </div>
   );
 }
