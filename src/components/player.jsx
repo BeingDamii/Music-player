@@ -9,13 +9,13 @@ const Player = () => {
         <ForwardIcon />
       </div>
       <div className="song-details">
-        <h1 className="song-name">song name</h1>
-        <h1 className="song-albulm">Song singer</h1>
+        <h1 className="song-name">Naruto lo-fi beat</h1>
+        <h4 className="song-albulm">From Naruto: Shippuden S7E11</h4>
       </div>
       <div className="seek">
-        <h4 className="start-time">start time</h4>
+        <h4 className="start-time">1:24</h4>
         <input type="range" name="range" id="range" />
-        <h4 className="end-time">end time</h4>
+        <h4 className="end-time">2:70</h4>
       </div>
     </div>
   );
