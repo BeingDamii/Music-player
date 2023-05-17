@@ -1,0 +1,42 @@
+.scrollableText-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  z-index: -1;
+  justify-content: center;
+  margin-top: 550px;
+  position: absolute;
+}
+
+.text-wrapper {
+  width: 50%;
+  display: flex;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  position: absolute;
+  font-size: 127px;
+  color: #1f1f1f;
+  white-space: nowrap;
+  animation: animate 60s linear infinite;
+}
+
+.other {
+  color: #161616;
+  -webkit-text-stroke: 2px;
+  -webkit-text-stroke-color: #1f1f1f;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
