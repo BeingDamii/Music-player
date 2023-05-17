@@ -110,3 +110,52 @@ export const DragIcon = () => {
     </svg>
   );
 };
+export const PlaylistIcon = () => {
+  return (
+    <svg
+      width="30"
+      height="30"
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_5_375)">
+        <path
+          d="M28.125 9.03751H1.875V28.125H28.125V9.03751Z"
+          stroke="white"
+          stroke-width="2.3875"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M28.125 4.2625H15L12.6125 1.875H1.875V9.0375H28.125V4.2625Z"
+          stroke="white"
+          stroke-width="2.3875"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M10.225 23.35C10.8808 23.35 11.4125 22.8183 11.4125 22.1625C11.4125 21.5067 10.8808 20.975 10.225 20.975C9.56914 20.975 9.03748 21.5067 9.03748 22.1625C9.03748 22.8183 9.56914 23.35 10.225 23.35Z"
+          stroke="white"
+          stroke-width="2.3875"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M17.3875 22.15C18.0433 22.15 18.575 21.6183 18.575 20.9625C18.575 20.3067 18.0433 19.775 17.3875 19.775C16.7317 19.775 16.2 20.3067 16.2 20.9625C16.2 21.6183 16.7317 22.15 17.3875 22.15Z"
+          stroke="white"
+          stroke-width="2.3875"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M18.575 20.9625V13.8L11.425 15V22.1625"
+          stroke="white"
+          stroke-width="2.3875"
+          stroke-miterlimit="10"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_5_375">
+          <rect width="30" height="30" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+};
