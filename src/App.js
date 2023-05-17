@@ -2,6 +2,7 @@ import Navbar from "./components/navbar";
 import Player from "./components/player";
 import ScrollableText from "./components/scrollableText";
 import Song from "./components/songs";
+import musicData from "./resources/util";
 import "./styles/app.scss";
 
 function App() {
