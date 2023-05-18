@@ -1,18 +1,53 @@
 import { BackIcon, ForwardIcon, PlayIcon } from "../resources/icons";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Player = ({ song, setIsplaying, isPlaying }) => {
+  // react hooks
   const audioRef = useRef(null);
+  const [songInfo, setSongInfo] = useState({
+    currentTime: null,
+    duration: null,
+  });
 
-  function playSongHandler() {
+  function playsongHandler() {
     console.log(isPlaying);
     if (isPlaying) {
       audioRef.current.pause();
-      setIsplaying(!isPlaying)
     } else {
       audioRef.current.play();
-      setIsplaying(!isPlaying)
     }
+    setIsplaying(!isPlaying);
+  }
+
+  // function timeupdateHandler(event) {
+  //   const currentTime = event.target.currentTime;
+  //   const duration = event.target.duration;
+  // }
+
+  function timeupdateHandler(event) {
+    const currentTime = event.target.currentTime;
+    const duration = event.target.duration;
+
+    // Format currentTime
+    const formattedCurrentTime = formatTime(currentTime);
+
+    // Format duration
+    const formattedDuration = formatTime(duration);
+
+    setSongInfo({
+      ...songInfo,
+      currentTime: formattedCurrentTime,
+      duration: formattedDuration,
+    });
+  }
+
+  function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
+
+    return `${minutes}:${seconds}`;
   }
 
   return (
@@ -21,7 +56,7 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
         <button>
           <BackIcon />
         </button>
-        <button onClick={playSongHandler}>
+        <button onClick={playsongHandler}>
           <PlayIcon />
         </button>
         <button>
@@ -37,7 +72,11 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
         <input type="range" name="range" id="range" />
         <h4 className="end-time">2:70</h4>
       </div>
-      <audio ref={audioRef} src={song.audio}></audio>
+      <audio
+        onTimeUpdate={timeupdateHandler}
+        ref={audioRef}
+        src={song.audio}
+      ></audio>
     </div>
   );
 };
