@@ -7,12 +7,18 @@ import musicData from "./resources/util";
 import "./styles/app.scss";
 
 function App() {
-  const [songs,setSongs] = useState(musicData());
+  const [songs, setSongs] = useState(musicData());
+  const [currentSong, setCurrentSongs] = useState(songs[0]);
+  const [isPlaying, setIsplaying] = useState(false);
   return (
     <div className="main-wrapper">
       <Navbar />
-      <Song />
-      <Player />
+      <Song song={currentSong} />
+      <Player
+        isPlaying={isPlaying}
+        setIsplaying={setIsplaying}
+        song={currentSong}
+      />
       <ScrollableText />
     </div>
   );

@@ -11,8 +11,10 @@
     align-items: center;
     justify-content: space-evenly;
     width: 15%;
-    svg {
+    button{
+      background-color: transparent;
       cursor: pointer;
+      border: none;
     }
   }
   .song-details {
