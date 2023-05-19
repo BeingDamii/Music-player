@@ -12,7 +12,7 @@ function App() {
   const [isPlaying, setIsplaying] = useState(false);
   return (
     <div className="main-wrapper">
-      <Navbar />
+      <Navbar songs={songs} />
       <Song song={currentSong} />
       <Player
         isPlaying={isPlaying}

@@ -1,0 +1,29 @@
+.library-song-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  padding: 10px;
+  img{
+      width: 72px;
+      height: 72px;
+      border-radius: 5px;
+  }
+  .song-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px;
+    margin-left: 10px;
+    h1 {
+      font-size: 20px;
+      margin-top: -10px;
+      color: black;
+    }
+    h3 {
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 7px;
+      color: black;
+    }
+  }
+}
