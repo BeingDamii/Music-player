@@ -1,16 +1,16 @@
-import { BackIcon, ForwardIcon, PlayIcon } from "../resources/icons";
+import { BackIcon, ForwardIcon, PauseIcon, PlayIcon } from "../resources/icons";
 import { useRef, useState } from "react";
 
 const Player = ({ song, setIsplaying, isPlaying }) => {
   // react hooks
   const audioRef = useRef(null);
   const [songInfo, setSongInfo] = useState({
-    currentTime: null,
+    currentTime: 0,
     duration: null,
   });
 
+  // events handlers
   function playsongHandler() {
-    console.log(isPlaying);
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -18,26 +18,14 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
     }
     setIsplaying(!isPlaying);
   }
-
-  // function timeupdateHandler(event) {
-  //   const currentTime = event.target.currentTime;
-  //   const duration = event.target.duration;
-  // }
-
   function timeupdateHandler(event) {
     const currentTime = event.target.currentTime;
     const duration = event.target.duration;
 
-    // Format currentTime
-    const formattedCurrentTime = formatTime(currentTime);
-
-    // Format duration
-    const formattedDuration = formatTime(duration);
-
     setSongInfo({
       ...songInfo,
-      currentTime: formattedCurrentTime,
-      duration: formattedDuration,
+      currentTime: currentTime,
+      duration,
     });
   }
 
@@ -49,7 +37,10 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
 
     return `${minutes}:${seconds}`;
   }
-
+  function dragHandler(event) {
+    audioRef.current.currentTime = event.target.value;
+    setSongInfo({ ...songInfo, currentTime: event.target.value });
+  }
   return (
     <div className="player-wrapper">
       <div className="controller-icons">
@@ -57,7 +48,7 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
           <BackIcon />
         </button>
         <button onClick={playsongHandler}>
-          <PlayIcon />
+          {isPlaying ? <PlayIcon /> : <PauseIcon />}
         </button>
         <button>
           <ForwardIcon />
@@ -68,9 +59,21 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
         <h4 className="song-albulm">{song.artist}</h4>
       </div>
       <div className="seek">
-        <h4 className="start-time">1:24</h4>
-        <input type="range" name="range" id="range" />
-        <h4 className="end-time">2:70</h4>
+        <h4 className="start-time">
+          {isPlaying ? formatTime(songInfo.currentTime) : "0:00"}
+        </h4>
+        <input
+          min={0}
+          max={songInfo.duration}
+          value={songInfo.currentTime}
+          onChange={dragHandler}
+          type="range"
+          name="range"
+          id="range"
+        />
+        <h4 className="end-time">
+          {isPlaying ? formatTime(songInfo.duration) : "0:00"}
+        </h4>
       </div>
       <audio
         onTimeUpdate={timeupdateHandler}
