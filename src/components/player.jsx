@@ -18,7 +18,11 @@ const Player = ({
       .toString()
       .padStart(2, "0");
 
-    return `${minutes}:${seconds}`;
+    if (isNaN(time)) {
+      return " loading...";
+    } else {
+      return `${minutes}:${seconds}`;
+    }
   }
   // events handlers
   function playsongHandler() {

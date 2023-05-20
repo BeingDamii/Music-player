@@ -21,6 +21,8 @@ function App() {
     const currentTime = event.target.currentTime;
     const duration = event.target.duration;
 
+    
+
     setSongInfo({
       ...songInfo,
       currentTime: currentTime,
