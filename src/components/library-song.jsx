@@ -1,8 +1,32 @@
-import songImage from "../resources/songimage.png";
+const LibrarySong = ({
+  song,
+  songs,
+  isPlaying,
+  setIsplaying,
+  setCurrentSong,
+  setSongs,
+  audioRef,
+}) => {
+  function changeSong() {
+    const id = song.id;
+    const selectedSong = songs.filter((song) => song.id === id);
 
-const LibrarySong = ({ song }) => {
+    setCurrentSong(selectedSong[0]);
+    console.log(isPlaying);
+    // setIsplaying(true)
+
+    if (isPlaying) {
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.then((audio) => {
+          audioRef.current.play();
+        });
+      }
+    }
+  }
+
   return (
-    <div className="library-song-wrapper">
+    <div className="library-song-wrapper" onClick={changeSong}>
       <div>
         <img src={song.cover} alt="library song" />
       </div>

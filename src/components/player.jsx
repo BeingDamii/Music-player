@@ -1,33 +1,16 @@
 import { BackIcon, ForwardIcon, PauseIcon, PlayIcon } from "../resources/icons";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
-const Player = ({ song, setIsplaying, isPlaying }) => {
+const Player = ({
+  song,
+  setIsplaying,
+  audioRef,
+  songInfo,
+  setSongInfo,
+  isPlaying,
+}) => {
   // react hooks
-  const audioRef = useRef(null);
-  const [songInfo, setSongInfo] = useState({
-    currentTime: 0,
-    duration: null,
-  });
-
-  // events handlers
-  function playsongHandler() {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsplaying(!isPlaying);
-  }
-  function timeupdateHandler(event) {
-    const currentTime = event.target.currentTime;
-    const duration = event.target.duration;
-
-    setSongInfo({
-      ...songInfo,
-      currentTime: currentTime,
-      duration,
-    });
-  }
+  // const audioRef = useRef(null);
 
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
@@ -37,6 +20,16 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
 
     return `${minutes}:${seconds}`;
   }
+  // events handlers
+  function playsongHandler() {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsplaying(!isPlaying);
+  }
+
   function dragHandler(event) {
     audioRef.current.currentTime = event.target.value;
     setSongInfo({ ...songInfo, currentTime: event.target.value });
@@ -75,11 +68,6 @@ const Player = ({ song, setIsplaying, isPlaying }) => {
           {isPlaying ? formatTime(songInfo.duration) : "0:00"}
         </h4>
       </div>
-      <audio
-        onTimeUpdate={timeupdateHandler}
-        ref={audioRef}
-        src={song.audio}
-      ></audio>
     </div>
   );
 };
