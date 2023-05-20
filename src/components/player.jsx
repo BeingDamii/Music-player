@@ -61,7 +61,7 @@ const Player = ({
         </h4>
         <input
           min={0}
-          max={songInfo.duration}
+          max={isNaN(songInfo.duration) ? 0 : songInfo.duration}
           value={songInfo.currentTime}
           onChange={dragHandler}
           type="range"
