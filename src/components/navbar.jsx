@@ -26,7 +26,7 @@ const Navbar = ({
         style={{ width: isClicked ? "10%" : "15%" }}
       >
         <PlaylistIcon />
-        <h3>{isClicked ? "Playlist" : "close playlist"}</h3>
+        <h3>{isClicked ? "Library" : "Close library"}</h3>
       </div>
       <div
         className="library"

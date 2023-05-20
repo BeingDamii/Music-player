@@ -3,10 +3,11 @@
   flex-direction: row;
   align-content: center;
   padding: 10px;
-  img{
-      width: 72px;
-      height: 72px;
-      border-radius: 5px;
+  cursor: pointer;
+  img {
+    width: 72px;
+    height: 72px;
+    border-radius: 5px;
   }
   .song-description {
     display: flex;
@@ -28,7 +29,10 @@
   }
 }
 
+.library-song-wrapper:hover {
+  background-color: #f1f1f1;
+}
 
-.active{
+.active {
   background-color: #ffe6e6;
 }
