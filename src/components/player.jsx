@@ -8,6 +8,7 @@ const Player = ({
   audioRef,
   songInfo,
   songs,
+  setSongs,
   setSongInfo,
   isPlaying,
 }) => {
@@ -35,32 +36,49 @@ const Player = ({
     setIsplaying(!isPlaying);
   }
 
-  // function skiptrackHandler(direction) {
+  // function skipTrackHandler(direction) {
   //   const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
   //   const lengthSongs = songs.length;
-  //   if (currentIndex === lengthSongs - 1) {
-  //     setCurrentSong(songs[0]);
-  //   } else if (direction === "forward") {
-  //     setCurrentSong(songs[currentIndex + 1]);
-  //   } else if (direction === "backward" && currentIndex === 0) {
-  //     setCurrentSong(songs[lengthSongs - 1]);
-  //   } else if (direction === "backward") {
-  //     setCurrentSong(songs[currentIndex - 1]);
+
+  //   let newIndex;
+
+  //   if (direction === "forward") {
+  //     newIndex = (currentIndex + 1) % lengthSongs;
+  //   } else {
+  //     newIndex = (currentIndex - 1 + lengthSongs) % lengthSongs;
   //   }
+
+  //   const updatedSongs = songs.map((song) => {
+  //     if (song.id == currentSong.id) {
+  //       return {
+  //         ...song,
+  //         active: true,
+  //       };
+  //     } else {
+  //       return {
+  //         ...song,
+  //         active: false,
+  //       };
+  //     }
+  //   });
+  //   setSongs(updatedSongs);
+
+  //   setCurrentSong(songs[newIndex]);
   // }
 
   function skipTrackHandler(direction) {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     const lengthSongs = songs.length;
+    const newIndex =
+      (currentIndex + (direction === "forward" ? 1 : -1) + lengthSongs) %
+      lengthSongs;
 
-    let newIndex;
+    const updatedSongs = songs.map((song, index) => ({
+      ...song,
+      active: index === newIndex,
+    }));
 
-    if (direction === "forward") {
-      newIndex = (currentIndex + 1) % lengthSongs;
-    } else {
-      newIndex = (currentIndex - 1 + lengthSongs) % lengthSongs;
-    }
-    console.log(newIndex);
+    setSongs(updatedSongs);
     setCurrentSong(songs[newIndex]);
   }
 
