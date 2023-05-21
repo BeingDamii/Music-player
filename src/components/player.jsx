@@ -1,6 +1,6 @@
 import { BackIcon, ForwardIcon, PauseIcon, PlayIcon } from "../resources/icons";
 import { useState } from "react";
-
+import { playAudio } from "../resources/fns";
 const Player = ({
   currentSong,
   setCurrentSong,
@@ -80,6 +80,7 @@ const Player = ({
 
     setSongs(updatedSongs);
     setCurrentSong(songs[newIndex]);
+    playAudio(isPlaying, audioRef);
   }
 
   function dragHandler(event) {

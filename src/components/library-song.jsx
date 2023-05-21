@@ -1,64 +1,31 @@
+import React from "react";
+import { playAudio } from "../resources/fns";
+
 const LibrarySong = ({
   song,
   songs,
   isPlaying,
-  setIsplaying,
+  setIsPlaying,
   setCurrentSong,
   setSongs,
   audioRef,
 }) => {
-  // function changeSong() {
-  //   const id = song.id;
-  //   const selectedSong = songs.filter((song) => song.id === id);
+  // event handlers
 
-  //   setCurrentSong(selectedSong[0]);
-  //   const updatedSongs = songs.map((song) => {
-  //     if (song.id === id) {
-  //       return {
-  //         ...song,
-  //         active: true,
-  //       };
-  //     } else {
-  //       return {
-  //         ...song,
-  //         active: false,
-  //       };
-  //     }
-  //   });
-  //   setSongs(updatedSongs);
-
-  //   // setIsplaying(true)
-
-  //   if (isPlaying) {
-  //     const playPromise = audioRef.current.play();
-  //     // console.log(audioRef.current);
-  //     if (playPromise !== undefined) {
-  //       playPromise.then((audio) => {
-  //         audioRef.current.play();
-  //       });
-  //     }
-  //   }
-  // }
-
-  function changeSong() {
+  const changeSong = () => {
     const id = song.id;
-    const selectedSong = songs.find((song) => song.id === id);
+    const selectedSong = songs.find((s) => s.id === id);
 
     setCurrentSong(selectedSong);
 
-    const updatedSongs = songs.map((song) => ({
-      ...song,
-      active: song.id === id,
+    const updatedSongs = songs.map((s) => ({
+      ...s,
+      active: s.id === id,
     }));
 
     setSongs(updatedSongs);
-
-    if (isPlaying) {
-      audioRef.current.play().catch((error) => {
-        console.error("Failed to play audio:", error);
-      });
-    }
-  }
+    playAudio(isPlaying, audioRef);
+  };
 
   return (
     <div
