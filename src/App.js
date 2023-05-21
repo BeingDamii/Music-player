@@ -21,8 +21,6 @@ function App() {
     const currentTime = event.target.currentTime;
     const duration = event.target.duration;
 
-    
-
     setSongInfo({
       ...songInfo,
       currentTime: currentTime,
@@ -30,24 +28,24 @@ function App() {
     });
   }
 
-  
-
   return (
     <div className="main-wrapper">
       <Navbar
         songs={songs}
         setCurrentSong={setCurrentSong}
         setSongs={setSongs}
-        isPlaying ={isPlaying}
+        isPlaying={isPlaying}
         setIsplaying={setIsplaying}
         audioRef={audioRef}
-      />
+        />
       <Song song={currentSong} />
       <Player
         audioRef={audioRef}
         isPlaying={isPlaying}
         setIsplaying={setIsplaying}
-        song={currentSong}
+        songs={songs}
+        currentSong={currentSong}
+        setCurrentSong={setCurrentSong}
         songInfo={songInfo}
         setSongInfo={setSongInfo}
       />
