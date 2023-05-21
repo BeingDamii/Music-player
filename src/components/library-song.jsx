@@ -7,36 +7,56 @@ const LibrarySong = ({
   setSongs,
   audioRef,
 }) => {
+  // function changeSong() {
+  //   const id = song.id;
+  //   const selectedSong = songs.filter((song) => song.id === id);
+
+  //   setCurrentSong(selectedSong[0]);
+  //   const updatedSongs = songs.map((song) => {
+  //     if (song.id === id) {
+  //       return {
+  //         ...song,
+  //         active: true,
+  //       };
+  //     } else {
+  //       return {
+  //         ...song,
+  //         active: false,
+  //       };
+  //     }
+  //   });
+  //   setSongs(updatedSongs);
+
+  //   // setIsplaying(true)
+
+  //   if (isPlaying) {
+  //     const playPromise = audioRef.current.play();
+  //     // console.log(audioRef.current);
+  //     if (playPromise !== undefined) {
+  //       playPromise.then((audio) => {
+  //         audioRef.current.play();
+  //       });
+  //     }
+  //   }
+  // }
+
   function changeSong() {
     const id = song.id;
-    const selectedSong = songs.filter((song) => song.id === id);
+    const selectedSong = songs.find((song) => song.id === id);
 
-    setCurrentSong(selectedSong[0]);
-    const updatedSongs = songs.map((song) => {
-      if (song.id === id) {
-        return {
-          ...song,
-          active: true,
-        };
-      } else {
-        return {
-          ...song,
-          active: false,
-        };
-      }
-    });
+    setCurrentSong(selectedSong);
+
+    const updatedSongs = songs.map((song) => ({
+      ...song,
+      active: song.id === id,
+    }));
+
     setSongs(updatedSongs);
 
-    // setIsplaying(true)
-
     if (isPlaying) {
-      const playPromise = audioRef.current.play();
-      // console.log(audioRef.current);
-      if (playPromise !== undefined) {
-        playPromise.then((audio) => {
-          audioRef.current.play();
-        });
-      }
+      audioRef.current.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
     }
   }
 
