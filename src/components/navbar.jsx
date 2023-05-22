@@ -8,6 +8,8 @@ const Navbar = ({
   setIsplaying,
   setCurrentSong,
   audioRef,
+  dragged,
+  setDragged,
   setSongs,
 }) => {
   // react hooks
@@ -44,6 +46,8 @@ const Navbar = ({
               setSongs={setSongs}
               isPlaying={isPlaying}
               setIsplaying={setIsplaying}
+              dragged = {dragged}
+              setDragged ={setDragged}
             />
           );
         })}

@@ -12,6 +12,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsplaying] = useState(false);
   const audioRef = useRef(null);
+  const [dragged, setDragged] = useState("hello wworld");
 
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
@@ -69,8 +70,17 @@ function App() {
         isPlaying={isPlaying}
         setIsplaying={setIsplaying}
         audioRef={audioRef}
+        dragged={dragged}
+        setDragged={setDragged}
       />
-      <Song song={currentSong} />
+      <Song
+        song={currentSong}
+        audioRef={audioRef}
+        setCurrentSong={setCurrentSong}
+        dragged={dragged}
+        isPlaying={isPlaying}
+        setDragged={setDragged}
+      />
       <Player
         audioRef={audioRef}
         isPlaying={isPlaying}

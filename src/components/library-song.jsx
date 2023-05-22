@@ -9,6 +9,8 @@ const LibrarySong = ({
   setCurrentSong,
   setSongs,
   audioRef,
+  dragged,
+  setDragged,
 }) => {
   // event handlers
 
@@ -30,8 +32,17 @@ const LibrarySong = ({
     }
   };
 
+  const handleDragStart = async (event) => {
+    // Set any necessary data for the drag operation
+    event.dataTransfer.setData("text/plain", event.target.id);
+    await setDragged(song);
+    // console.log(dragged);
+  };
+
   return (
     <div
+      draggable={true}
+      onDragStart={handleDragStart}
       className={`library-song-wrapper ${song.active ? "active" : ""}`}
       onClick={changeSong}
     >
