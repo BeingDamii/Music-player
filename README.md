@@ -13,4 +13,3 @@ you can also find the live version of the webapp [here](https://endearing-concha
 
 ## Free free to clone this project to make your own music app, refactor this one or add new features belive me i dont mind!.
 
-special shout-out to [DevelopedbyEd](https://developedbyed.com/) for his awesome react course, you rock mate!.
