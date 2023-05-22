@@ -31,7 +31,6 @@ const LibrarySong = ({
 
   const handleDragStart = async (event) => {
     // Set any necessary data for the drag operation
-    event.dataTransfer.setData("text/plain", event.target.id);
     await setDragged(song);
     // console.log(dragged);
   };

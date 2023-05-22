@@ -74,6 +74,8 @@ function App() {
       />
       <Song
         song={currentSong}
+        songs = {songs}
+        setSongs = {setSongs}
         audioRef={audioRef}
         setCurrentSong={setCurrentSong}
         dragged={dragged}

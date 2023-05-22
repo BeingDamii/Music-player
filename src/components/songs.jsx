@@ -1,7 +1,8 @@
-
 import { DragIcon } from "../resources/icons";
 const Song = ({
   song,
+  songs,
+  setSongs,
   audioRef,
   isPlaying,
   dragged,
@@ -10,6 +11,12 @@ const Song = ({
 }) => {
   const handleDragOver = (event) => {
     // console.log("dragged over");
+    const id = dragged.id;
+    const updatedSongs = songs.map((s) => ({
+      ...s,
+      active: s.id === id,
+    }));
+    setSongs(updatedSongs);
     setCurrentSong(dragged);
 
     audioRef.current.addEventListener("canplaythrough", () => {
