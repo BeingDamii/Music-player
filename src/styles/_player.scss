@@ -37,10 +37,42 @@
     justify-content: space-around;
     align-items: center;
     margin-left: 20px;
+
+    // styling the input
+    .track {
+      width: 80%;
+      height: 7px;
+      background: #ffcf55;
+      overflow: hidden;
+      position: relative;
+    }
+    .animate-track {
+      background-color: #ffffff;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      transform: translateX(70%);
+    }
     input {
       width: 80%;
       height: 3px;
       padding: 1rem 0rem;
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    input[type="range"]:focus {
+      outline: none;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background-color: none;
+      height: 16px;
+      width: 16px;
     }
   }
 }

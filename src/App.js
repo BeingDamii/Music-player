@@ -15,16 +15,25 @@ function App() {
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
+    animationPercentage: 0,
   });
 
   function timeupdateHandler(event) {
     const currentTime = event.target.currentTime;
     const duration = event.target.duration;
 
+    // calculate percentage
+    const currentRounded = Math.round(currentTime);
+    const durationRounded = Math.round(duration);
+    const animationPercentage = Math.round(
+      (currentRounded / durationRounded) * 100
+    );
+
     setSongInfo({
       ...songInfo,
       currentTime: currentTime,
       duration,
+      animationPercentage,
     });
   }
 
@@ -37,14 +46,14 @@ function App() {
         isPlaying={isPlaying}
         setIsplaying={setIsplaying}
         audioRef={audioRef}
-        />
+      />
       <Song song={currentSong} />
       <Player
         audioRef={audioRef}
         isPlaying={isPlaying}
         setIsplaying={setIsplaying}
         songs={songs}
-        setSongs = {setSongs}
+        setSongs={setSongs}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
         songInfo={songInfo}

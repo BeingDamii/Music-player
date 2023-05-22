@@ -13,7 +13,7 @@ const Player = ({
   isPlaying,
 }) => {
   // react hooks
-
+// console.log(currentSong.color);
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60)
@@ -87,6 +87,7 @@ const Player = ({
     audioRef.current.currentTime = event.target.value;
     setSongInfo({ ...songInfo, currentTime: event.target.value });
   }
+
   return (
     <div className="player-wrapper">
       <div className="controller-icons">
@@ -116,15 +117,28 @@ const Player = ({
         <h4 className="start-time">
           {isPlaying ? formatTime(songInfo.currentTime) : "0:00"}
         </h4>
-        <input
-          min={0}
-          max={isNaN(songInfo.duration) ? 0 : songInfo.duration}
-          value={songInfo.currentTime}
-          onChange={dragHandler}
-          type="range"
-          name="range"
-          id="range"
-        />
+        <div
+          className="track"
+          style={{
+            background: `linear-gradient(to right,${currentSong.color[0]}, ${currentSong.color[1]})`,
+          }}
+        >
+          <div
+            className="animate-track"
+            style={{
+              transform: `translateX(${songInfo.animationPercentage}%)`,
+            }}
+          ></div>
+          <input
+            min={0}
+            max={isNaN(songInfo.duration) ? 0 : songInfo.duration}
+            value={songInfo.currentTime}
+            onChange={dragHandler}
+            type="range"
+            name="range"
+            id="range"
+          />
+        </div>
         <h4 className="end-time">
           {isPlaying ? formatTime(songInfo.duration) : "0:00"}
         </h4>
