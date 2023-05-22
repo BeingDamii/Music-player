@@ -1,4 +1,4 @@
-import { PlaylistIcon } from "../resources/icons";
+import { CloseIcon, PlaylistIcon } from "../resources/icons";
 import LibrarySong from "./library-song";
 import { useState } from "react";
 
@@ -25,7 +25,8 @@ const Navbar = ({
         onClick={clickHandler}
         style={{ width: isClicked ? "10%" : "15%" }}
       >
-        <PlaylistIcon />
+        {isClicked ? <PlaylistIcon /> : <CloseIcon />}
+
         <h3>{isClicked ? "Library" : "Close library"}</h3>
       </div>
       <div
