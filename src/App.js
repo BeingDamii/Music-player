@@ -5,7 +5,6 @@ import Song from "./components/songs";
 import { useState, useRef } from "react";
 import musicData from "./resources/util";
 import "./styles/app.scss";
-import { playAudio } from "./resources/fns";
 
 function App() {
   const [songs, setSongs] = useState(musicData());

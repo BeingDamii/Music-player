@@ -1,15 +1,12 @@
 import React from "react";
-import { playAudio } from "../resources/fns";
 
 const LibrarySong = ({
   song,
   songs,
   isPlaying,
-  setIsPlaying,
   setCurrentSong,
   setSongs,
   audioRef,
-  dragged,
   setDragged,
 }) => {
   // event handlers

@@ -1,4 +1,4 @@
-import Artwork from "../resources/artwork.png";
+
 import { DragIcon } from "../resources/icons";
 const Song = ({
   song,
@@ -11,7 +11,7 @@ const Song = ({
   const handleDragOver = (event) => {
     // console.log("dragged over");
     setCurrentSong(dragged);
-    
+
     audioRef.current.addEventListener("canplaythrough", () => {
       if (isPlaying) audioRef.current.play();
     });

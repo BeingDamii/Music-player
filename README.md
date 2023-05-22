@@ -7,8 +7,9 @@ you can also find the live version of the webapp [here](https://endearing-concha
 # whats next?
 
 1. Am hooking up the data to firebase to make updateing the collection more dynamic.
-2. Adding a drag functioality to the library-songs, i dont have to but ermmm...who's feeling like a react ninja? me!.
-3. might consider playing with spotify or soundcloud Api in future...fingers crossed X
+2. Adding a drag functioality to the library-songs, i dont have to but ermmm...who's feeling like a react ninja? me!.(done)
+3. Add a favicon (done)
+4. might consider playing with spotify or soundcloud Api in future...fingers crossed X
 
 ## Free free to clone this project to make your own music app, refactor this one or add new features belive me i dont mind!.
 

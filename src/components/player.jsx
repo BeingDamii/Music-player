@@ -1,6 +1,5 @@
 import { BackIcon, ForwardIcon, PauseIcon, PlayIcon } from "../resources/icons";
-import { useState } from "react";
-import { playAudio } from "../resources/fns";
+
 const Player = ({
   currentSong,
   setCurrentSong,
