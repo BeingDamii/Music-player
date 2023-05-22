@@ -5,6 +5,7 @@ import Song from "./components/songs";
 import { useState, useRef } from "react";
 import musicData from "./resources/util";
 import "./styles/app.scss";
+import { playAudio } from "./resources/fns";
 
 function App() {
   const [songs, setSongs] = useState(musicData());
@@ -37,6 +38,28 @@ function App() {
     });
   }
 
+  // async function audioEndedHandler() {
+  //   let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+  //   const lengthSongs = songs.length;
+
+  //   await setCurrentSong(songs[(currentIndex + 1) % lengthSongs]);
+
+  //   if (isPlaying) audioRef.current.play();
+
+  //   console.log("ended");
+  // }
+
+  async function audioEndedHandler() {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    const lengthSongs = songs.length;
+
+    await setCurrentSong(songs[(currentIndex + 1) % lengthSongs]);
+
+    audioRef.current.addEventListener("canplaythrough", () => {
+      if (isPlaying) audioRef.current.play();
+    });
+  }
+
   return (
     <div className="main-wrapper">
       <Navbar
@@ -63,6 +86,7 @@ function App() {
         onTimeUpdate={timeupdateHandler}
         ref={audioRef}
         src={currentSong.audio}
+        onEnded={audioEndedHandler}
       ></audio>
       <ScrollableText />
     </div>

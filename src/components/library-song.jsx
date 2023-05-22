@@ -12,19 +12,22 @@ const LibrarySong = ({
 }) => {
   // event handlers
 
-  const changeSong = () => {
+  const changeSong = async () => {
     const id = song.id;
     const selectedSong = songs.find((s) => s.id === id);
 
-    setCurrentSong(selectedSong);
+    await setCurrentSong(selectedSong);
 
     const updatedSongs = songs.map((s) => ({
       ...s,
       active: s.id === id,
     }));
 
-    setSongs(updatedSongs);
-    playAudio(isPlaying, audioRef);
+    await setSongs(updatedSongs);
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
   };
 
   return (

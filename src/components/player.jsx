@@ -13,7 +13,7 @@ const Player = ({
   isPlaying,
 }) => {
   // react hooks
-// console.log(currentSong.color);
+  // console.log(currentSong.color);
   function formatTime(time) {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60)
@@ -66,7 +66,7 @@ const Player = ({
   //   setCurrentSong(songs[newIndex]);
   // }
 
-  function skipTrackHandler(direction) {
+  async function skipTrackHandler(direction) {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     const lengthSongs = songs.length;
     const newIndex =
@@ -79,8 +79,11 @@ const Player = ({
     }));
 
     setSongs(updatedSongs);
-    setCurrentSong(songs[newIndex]);
-    playAudio(isPlaying, audioRef);
+    await setCurrentSong(songs[newIndex]);
+
+    if (isPlaying) {
+      audioRef.current.play();
+    }
   }
 
   function dragHandler(event) {
