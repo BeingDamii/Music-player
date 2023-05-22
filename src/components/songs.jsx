@@ -3,7 +3,6 @@ import { DragIcon } from "../resources/icons";
 const Song = ({ song }) => {
   return (
     <div className="song-wrapper">
-      {/* <img src={Artwork} alt="demo-artwork" /> */}
       <img src={song.cover} alt="song-artwork" className="song-cover" />
       <div className="drag-instruction-div">
         <DragIcon />

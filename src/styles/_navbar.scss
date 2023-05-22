@@ -29,3 +29,16 @@
   padding-top: 30px;
   position: absolute;
 }
+
+@media screen and(max-width:500px) {
+  .navbar-wrapper{
+    h1{
+      font-size: 20px;
+    }
+  }
+  .library-toggle{
+    h3{
+      display: none;
+    }
+  }
+}

@@ -76,3 +76,35 @@
     }
   }
 }
+
+@media screen and(max-width:500px) {
+  .player-wrapper {
+    flex-direction: column;
+    margin-top: 0px;
+    justify-content: space-between;
+    align-content: space-around;
+    .controller-icons {
+      width: 70%;
+    }
+    .song-details {
+      margin-top: 20px;
+      .song-name {
+        font-size: 16px;
+        text-align: center;
+      }
+      .song-albulm {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+    .seek{
+      width: 100%;
+      margin-top: 10px;
+      .track{
+        width: 70%;
+      }
+    }
+    }
+  }
+

@@ -18,8 +18,17 @@ body {
   padding: 30px 70px 10px 70px;
   padding-bottom: 0px;
 }
+
+@media screen and(max-width:500px) {
+  .body{
+    overflow: hidden;
+  }
+  .main-wrapper {
+    padding: 70px 30px 10px 30px;
+  }
+}
 @import "./player";
 @import "./song";
 @import "./navbar";
 @import "./_scrollableText";
-@import "./library-song.scss"
+@import "./library-song.scss";
