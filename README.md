@@ -2,7 +2,7 @@
 
 [Here is the design of the whole player, pretty rusty but good enough to keep you on track](https://www.figma.com/file/gnEpTrgmjuY9bnR4xu4RXg/Music-app?type=design&node-id=4%3A239&t=sjjbOnfVdzzzIwYG-1https://).
 
-you can also find the live version of the webapp [here](https://endearing-concha-68e040.netlify.app/) :) i couldnt wait to start using it....
+you can also find the live version of the webapp [here](https://myloficollection.netlify.app) :) i couldnt wait to start using it....
 
 # whats next?
 
